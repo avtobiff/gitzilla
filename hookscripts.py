@@ -58,7 +58,7 @@ def get_bz_data(siteconfig, userconfig):
     bAllowDefaultAuth = True
 
   # ignore auth from user config is "deny"
-  if sUserOption == "deny":
+  if sUserOption == "deny" or None in (sBZUser, sBZPasswd):
     (sBZUser, sBZPasswd) = bz_auth_from_config(siteconfig, sRepo)
     if None in (sBZUser, sBZPasswd):
       raise ValueError("No default Bugzilla auth found. Cannot use user-auth because user_config is set to 'deny'")
